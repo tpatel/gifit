@@ -1,0 +1,9 @@
+{
+    "name": "mean",
+    "version": "1.0.0",
+    "dependencies": {
+        "bootstrap-assets": "3.0.0",
+        "angular-bootstrap": "~0.6.0",
+        "angular-ui-utils": "0.0.4"
+    }
+}

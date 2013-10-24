@@ -1,0 +1,11 @@
+{
+    "db": "mongodb://localhost/mean-dev",
+    "app": {
+        "name": "GifIt - Gif about you"
+    },
+    "twitter": {
+        "clientID": "bvghdifF22bUFxYtTvcv1g",
+        "clientSecret": "fiNVVmEu0kqOA78Ok8PU2U2T42ZrGqVHTa02yEwFaUs",
+        "callbackURL": "http://localhost:3000/auth/twitter/callback"
+    }
+}

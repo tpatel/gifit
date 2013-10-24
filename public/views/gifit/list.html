@@ -1,0 +1,7 @@
+<section data-ng-controller="GifitController" data-ng-init="find()">
+
+	<div class="well col-sm-6 col-sm-offset-3" ng-repeat="gifit in gifits" >
+			<h4><i class="fa fa-quote-left fa-2x pull-left"></i> <small><a href="http://twitter.com/{{gifit.user.username}}">@{{gifit.user.username}}</a>:</small> {{gifit.text}}</h4>
+			<div style="clear:both;text-align:center;"><img ng-src="{{gifit.content}}"></img></div>
+	</div>
+</section>

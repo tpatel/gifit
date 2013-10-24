@@ -1,0 +1,22 @@
+<section data-ng-controller="IndexController">
+	<div data-ng-hide="global.authenticated">
+		<div class="jumbotron">
+			<h1 class="title centered"><i class="fa fa-camera-retro"></i> Gifit - Gif about you</a></h1>
+			<br/>
+			<p class="centered">
+				Start tweeting in a more personal way. Unleash your creative personality.
+			</p>
+			<br/>
+			<p class="centered">
+				<a href="/auth/twitter" class="btn btn-primary btn-lg"><i class="fa fa-twitter"></i> Signin with Twitter</a>
+			</p>
+		</div>
+		
+	</div>
+	
+	<div class="well" style="max-width:400px;margin:auto;" data-ng-show="global.authenticated">
+		<h1>Create a new gifit !</h1>
+		<br/>
+		<a href="#!/gifit/create" class="btn btn-primary btn-lg btn-block">Create a gifit</a>
+	</div>
+</section>

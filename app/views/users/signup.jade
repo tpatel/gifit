@@ -1,0 +1,16 @@
+extends auth
+
+block auth
+  form.form-signin(action="/users", method="post")
+    .h2.form-signin-heading Please sign up
+    
+    mixin input('name', 'text', 'Full Name', user.name, 'true')
+    mixin input('email', 'text', 'Email address', user.email)
+    mixin input('username', 'text', 'Username', user.username)
+    mixin input('password', 'text', 'Password')
+    
+    div
+      button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign up
+      p Already registered ? 
+        a.show-signup(href="/signin") Sign in
+    

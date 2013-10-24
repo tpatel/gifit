@@ -1,0 +1,76 @@
+<section id="controller" data-ng-controller="GifitController">
+	<div class="well" style="max-width:400px;margin:auto;" data-ng-show="global.authenticated">
+		<form class="form-horizontal" data-ng-submit="create()">
+			
+			<h1>1. Record yourself</h1>
+			<p>Please allow GifIt to access your camera.</p>
+			<div id="videoElem" style="text-align:center">
+				&nbsp;
+			</div>
+			
+			<div class="form-group">
+				<a id="k" class="btn btn-primary btn-lg btn-block"><i id="processing" class="fa fa-cog fa-spin" style="display:none;"></i> Record myself</a>
+			</div>
+			
+			<h1>2. Write your tweet and send</h1>
+			<div class="form-group">
+				<label class="control-label" for="text">Tweet</label>
+				<input type="text" class="form-control" data-ng-model="text" id="text" placeholder="My tweet..." required>
+			</div>
+			
+			<div class="form-group">
+				<input id="submit" type="submit" class="btn btn-primary btn-lg btn-block" value="" disabled>
+			</div>
+			
+			<div style="text-align:center">
+				<img id="result" src=""><img>
+			</div>
+			
+		</form>
+	</div>
+	
+</section>
+
+<script src="/js/gif.js"></script>
+
+<script>
+  document.getElementById('submit').value = 'Tweet from @'+user.username;
+  var getScreenshot = function (callback, numFrames, interval) {
+    if (typeof videoShooter != 'undefined') {
+      videoShooter.getShot(callback, numFrames, interval);
+    } else {
+      callback('');
+    }
+  };
+
+  if (navigator.getMedia) {
+    GumHelper.startVideoStreaming(function errorCb() {
+    }, function successCallback(stream, videoElement, width, height) {
+      videoElement.width = width / 4;
+      videoElement.height = height / 4;
+      document.getElementById('videoElem').innerHTML= '';
+      document.getElementById('videoElem').appendChild(videoElement);
+      videoElement.play();
+      videoShooter = new VideoShooter(videoElement);
+    });
+  } else {
+    console.log('no');
+  }
+  
+  document.getElementById('k').addEventListener('click', function(e) {
+  	document.getElementById('k').disabled = true;
+  	document.getElementById('processing').style.display = 'inherit';
+  	getScreenshot(function (pictureData) {
+  		document.getElementById('processing').style.display = 'none';
+  		if(pictureData) {
+  			document.getElementById('submit').disabled = false;
+  		}
+  		document.getElementById('result').src = pictureData;
+  		var scope = angular.element(document.getElementById('controller')).scope();
+  		scope.$apply(function() {
+  			scope.content = pictureData;
+  		});
+  	}, 10, 0.2);
+  	return false;
+  });
+</script>

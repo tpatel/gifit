@@ -1,0 +1,11 @@
+{
+    "db": "mongodb://nodejitsu_thibpat:1evl7qmrl02rrnpo341o7jq3bf@ds045978.mongolab.com:45978/nodejitsu_thibpat_nodejitsudb79664106",
+    "app": {
+        "name": "GifIt - Gif about you"
+    },
+    "twitter": {
+        "clientID": "bvghdifF22bUFxYtTvcv1g",
+        "clientSecret": "fiNVVmEu0kqOA78Ok8PU2U2T42ZrGqVHTa02yEwFaUs",
+        "callbackURL": "http://gifit.nodejitsu.com/auth/twitter/callback"
+    }
+}
